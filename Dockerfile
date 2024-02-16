@@ -5,6 +5,7 @@ LABEL Description = "PHPNuxBill - PHP Mikrotik Billing base on Latest Alpine Ima
 
 # Setup document root
 WORKDIR /var/www/html
+VOLUME /var/www/html
 
 # Expose the port nginx & mysql is reachable on
 EXPOSE 80
