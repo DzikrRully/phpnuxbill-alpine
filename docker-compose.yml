@@ -1,8 +1,7 @@
-version: "2.1"
+version: "0.1"
 services:
-  mikhmon:
-    image: animegasan/phpnuxbill:latest
-    container_name: phpnuxbill
+    image: dzikrrully/phpnuxbill-alpine:latest
+    container_name: phpnuxbill-alpine
     ports:
       - 8080:80
     restart: unless-stopped
