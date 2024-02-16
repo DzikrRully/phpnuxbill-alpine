@@ -42,22 +42,22 @@ RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp/gitclone
 RUN mv /tmp/gitclone/* /var/www/html/
 
 # Configure nginx
-# COPY conf/nginx.conf /etc/nginx/nginx.conf
+ COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 # Configure MySQL
-# COPY conf/my.cnf /etc/mysql/my.cnf
-# COPY conf/mysql.sh /app/mysql.sh
-# RUN chmod +x /app/mysql.sh
+ COPY conf/my.cnf /etc/mysql/my.cnf
+ COPY conf/mysql.sh /app/mysql.sh
+ RUN chmod +x /app/mysql.sh
 
 # Configure PHP-FPM
-# COPY conf/fpm-pool.conf /etc/php81/php-fpm.d/www.conf
-# COPY conf/php.ini /etc/php81/conf.d/custom.ini
+ COPY conf/fpm-pool.conf /etc/php81/php-fpm.d/www.conf
+ COPY conf/php.ini /etc/php81/conf.d/custom.ini
 
 # Configure supervisord
-# COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Add application
 RUN chown -R nginx /var/www/html/
 
 # Let supervisord start nginx & php-fpm
-# CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
