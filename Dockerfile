@@ -30,13 +30,14 @@ RUN apk add --no-cache \
     unzip \
     git \
     wget \
+    freeradius \
     supervisor
 
 # Clone Git PHPNuxBill
-RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp
+RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp/gitclone
 
 # Move to html folder
-RUN mv /tmp/* /var/www/html/
+RUN mv /tmp/gitclone/* /var/www/html/
 # Configure nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
@@ -53,7 +54,7 @@ COPY conf/php.ini /etc/php82/conf.d/custom.ini
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Add application
-# COPY --chown=nginx src /var/www/html/
+RUN chown nginx /var/www/html/
 
 # Let supervisord start nginx & php-fpm
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
