@@ -1,7 +1,20 @@
-version: "0.1"
+# Configuration for PHPNuxBill
+
+# Application Name
+name: phpnuxbill-alpine
+
+# Services used in the application
 services:
+  apphpnuxbill:
+    # Name of the container
+    container_name: phpnuxbill
+    # Hostname
+    hostname: PHPNuxBill
+    # Docker image to be used
     image: dzikrrully/phpnuxbill-alpine:latest
-    container_name: phpnuxbill-alpine
+    labels:
+      icon: https://github.com/hotspotbilling/phpnuxbill/raw/master/install/img/logo.png
+    working_dir: /var/www/html
     ports:
       - 8080:80
     restart: unless-stopped
