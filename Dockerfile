@@ -1,30 +1,32 @@
 # Startup from alpine
 FROM alpine:latest
-LABEL Maintainer = "Hilman Maulana, Ibnu Maksum, Rizki Rahmatullah"
-LABEL Description = "PHPNuxBill (PHP Mikrotik Billing) is a web-based application (MikroTik API PHP class) Voucher management for MikroTik Hotspot."
+LABEL Maintainer = "DzikrRully"
+LABEL Description = "PHPNuxBill - PHP Mikrotik Billing base on Latest Alpine Images."
 
 # Setup document root
 WORKDIR /var/www/html
 
-# Expose the port nginx is reachable on
+# Expose the port nginx & mysql is reachable on
 EXPOSE 80
 EXPOSE 3306
 
 # Install packages
 RUN apk add --no-cache \
     nginx \
-    php81 \
-    php81-fpm \
-    php81-gd \
-    php81-mbstring \
-    php81-mysqli \
-    php81-session \
-    php81-pdo \
-    php81-pdo_mysql \
+    php82 \
+    php82-fpm \
+    php82-gd \
+    php82-mbstring \
+    php82-mysqli \
+    php82-session \
+    php82-pdo \
+    php82-pdo_mysql \
+    php82-zip \
     mysql \
     mysql-client \
     libzip-dev \
     zip \
+    unzip \
     supervisor
 
 # Configure nginx
@@ -36,8 +38,8 @@ COPY conf/mysql.sh /app/mysql.sh
 RUN chmod +x /app/mysql.sh
 
 # Configure PHP-FPM
-COPY conf/fpm-pool.conf /etc/php81/php-fpm.d/www.conf
-COPY conf/php.ini /etc/php81/conf.d/custom.ini
+COPY conf/fpm-pool.conf /etc/php82/php-fpm.d/www.conf
+COPY conf/php.ini /etc/php82/conf.d/custom.ini
 
 # Configure supervisord
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
