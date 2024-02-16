@@ -28,8 +28,15 @@ RUN apk add --no-cache \
     libzip-dev \
     zip \
     unzip \
+    git \
+    wget \
     supervisor
 
+# Clone Git PHPNuxBill
+RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp
+
+# Move to html folder
+RUN mv /tmp/phpnuxbill/* /var/www/html/
 # Configure nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
