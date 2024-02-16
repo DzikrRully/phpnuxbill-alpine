@@ -36,7 +36,7 @@ RUN apk add --no-cache \
 RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp
 
 # Move to html folder
-RUN mv /tmp/phpnuxbill/* /var/www/html/
+RUN mv /tmp/* /var/www/html/
 # Configure nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
