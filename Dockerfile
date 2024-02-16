@@ -29,6 +29,7 @@ RUN apk add --no-cache \
     unzip \
     git \
     wget \
+    nano \
     freeradius \
     freeradius-mysql \
     freeradius-utils \
