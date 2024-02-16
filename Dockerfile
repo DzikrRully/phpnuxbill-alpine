@@ -54,7 +54,7 @@ COPY conf/php.ini /etc/php82/conf.d/custom.ini
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Add application
-RUN chown nginx /var/www/html/
+RUN chown -R nginx /var/www/html/
 
 # Let supervisord start nginx & php-fpm
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
