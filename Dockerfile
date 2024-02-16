@@ -8,8 +8,7 @@ WORKDIR /var/www/html
 VOLUME /var/www/html
 
 # Expose the port nginx & mysql is reachable on
-EXPOSE 80
-EXPOSE 3306
+EXPOSE 80 3306 1812/udp 1813/udp
 
 # Install packages
 RUN apk add --no-cache \
@@ -31,13 +30,16 @@ RUN apk add --no-cache \
     git \
     wget \
     freeradius \
+    freeradius-mysql \
+    freeradius-utils \
     supervisor
 
 # Clone Git PHPNuxBill
 RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp/gitclone
 
-# Move to html folder
+# Move Cloned Git to html folder
 RUN mv /tmp/gitclone/* /var/www/html/
+
 # Configure nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
