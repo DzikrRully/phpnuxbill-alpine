@@ -57,7 +57,7 @@ RUN mv /tmp/gitclone/* /var/www/html/
  COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Add application
-RUN chown -R nginx /var/www/html/
+RUN chown -R nginx:nginx /var/www/html/
 
 # Let supervisord start nginx & php-fpm
  CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
