@@ -50,8 +50,8 @@ RUN mv /tmp/gitclone/* /var/www/html/
  RUN chmod +x /app/mysql.sh
 
 # Configure PHP-FPM
- COPY conf/fpm-pool.conf /etc/php81/php-fpm.d/www.conf
- COPY conf/php.ini /etc/php81/conf.d/custom.ini
+ COPY conf/fpm-pool.conf /etc/php82/php-fpm.d/www.conf
+ COPY conf/php.ini /etc/php82/conf.d/custom.ini
 
 # Configure supervisord
  COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
