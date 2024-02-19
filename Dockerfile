@@ -18,14 +18,14 @@ RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp/gitclone
 # Move Cloned Git to html folder
 RUN mv /tmp/gitclone/* /var/www/html/
 
-# Copy nginx.conf file to /etc/nginx
-COPY nginx.conf /etc/nginx
+# Copy nginx.conf file to /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy supervisor.conf file to /etc/supervisor
-COPY supervisor.conf /etc/supervisor
+# Copy supervisor.conf file to /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expose port 80 for nginx
 EXPOSE 80
 
 # Start supervisor service
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisor.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
