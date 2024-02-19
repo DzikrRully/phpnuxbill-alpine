@@ -1,4 +1,10 @@
+# Startup from alpine
 FROM alpine:latest
+LABEL Maintainer = "DzikrRully"
+LABEL Description = "PHPNuxBill - PHP Mikrotik Billing base on Latest Alpine Images."
+
+# Setup document root
+WORKDIR /var/www/html
 
 # Install nginx, mysql, freeradius, and supervisor
 RUN apk update && apk add --no-cache libzip-dev zip unzip git wget nano nginx mysql mysql-client freeradius freeradius-mysql freeradius-utils supervisor
