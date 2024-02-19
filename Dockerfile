@@ -6,10 +6,11 @@ RUN apk update && apk add --no-cache libzip-dev zip unzip git wget nano nginx my
 # Install php and phpnuxbill dependencies
 RUN apk add php82 php82-fpm php82-mysqli php82-session php82-pdo php82-pdo_mysql php82-xml php82-xmlrpc php82-zip php82-gd php82-curl php82-pear php82-ldap php82-mbstring php82-soap php82-json
 
-# Download and extract phpnuxbill
-RUN wget 1 -O /tmp/phpnuxbill.tar.gz && \
-    tar xzf /tmp/phpnuxbill.tar.gz -C /var/www/html && \
-    rm /tmp/phpnuxbill.tar.gz
+# Clone Git PHPNuxBill
+RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp/gitclone
+
+# Move Cloned Git to html folder
+RUN mv /tmp/gitclone/* /var/www/html/
 
 # Copy nginx.conf file to /etc/nginx
 COPY nginx.conf /etc/nginx
