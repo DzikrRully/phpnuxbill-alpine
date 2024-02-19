@@ -4,7 +4,7 @@ FROM alpine:latest
 RUN apk update && apk add --no-cache libzip-dev zip unzip git wget nano nginx mysql mysql-client freeradius freeradius-mysql freeradius-utils supervisor
 
 # Install php and phpnuxbill dependencies
-RUN apk add php82 php82-fpm php82-mysqli php82-session php82-pdo php82-pdo_mysql php82-xml php82-xmlrpc php82-zip php82-gd php82-curl php82-pear php82-ldap php82-mbstring php82-soap php82-json
+RUN apk add php82 php82-fpm php82-mysqli php82-session php82-pdo php82-pdo_mysql php82-xml php82-zip php82-gd php82-curl php82-pear php82-ldap php82-mbstring php82-soap php82-json
 
 # Clone Git PHPNuxBill
 RUN git clone https://github.com/hotspotbilling/phpnuxbill.git /tmp/gitclone
