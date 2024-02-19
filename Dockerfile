@@ -1,10 +1,10 @@
 FROM alpine:latest
 
 # Install nginx, mysql, freeradius, and supervisor
-RUN apk update && apk add nginx mysql mysql-client freeradius supervisor
+RUN apk update && apk add --no-cache libzip-dev zip unzip git wget nano nginx mysql mysql-client freeradius freeradius-mysql freeradius-utils supervisor
 
 # Install php and phpnuxbill dependencies
-RUN apk add php php-fpm php-mysqli php-session php-pdo php-pdo_mysql php-xml php-xmlrpc php-zip php-gd php-curl php-pear php-ldap php-mbstring php-soap php-json
+RUN apk add php82 php82-fpm php82-mysqli php82-session php82-pdo php82-pdo_mysql php82-xml php82-xmlrpc php82-zip php82-gd php82-curl php82-pear php82-ldap php82-mbstring php82-soap php82-json
 
 # Download and extract phpnuxbill
 RUN wget 1 -O /tmp/phpnuxbill.tar.gz && \
